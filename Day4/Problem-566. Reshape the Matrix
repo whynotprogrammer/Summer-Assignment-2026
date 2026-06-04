@@ -1,0 +1,14 @@
+class Solution {
+    public int[][] matrixReshape(int[][] mat, int r, int c) {
+       int m=mat.length;
+       int[][] newMat=new int[r][c];
+       int n=mat[0].length;
+       if(m*n!=r*c){
+        return mat;
+       }
+       for(int k=0;k<m*n;k++){
+        newMat[k/c][k%c]=mat[k/n][k%n];
+       }
+        return newMat;
+    }
+}
