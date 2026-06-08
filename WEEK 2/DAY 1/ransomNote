@@ -1,0 +1,47 @@
+#include<iostream>
+#include<unordered_map>
+#include<string>
+using namespace std;
+
+ bool canConstruct(string ransomNote, string magazine) {
+      unordered_map<char,int> m1;
+      unordered_map<char,int> m2;
+      for(auto i:ransomNote)
+      {
+         m1[i]++;
+      }
+      for(auto j:magazine)
+      {
+        m2[j]++;
+      }
+      if(m2.size()<m1.size())
+      {
+        return false;
+      }
+      for(auto i:m1)
+      {
+        if(m2.count(i.first))
+        {
+            if(m2[i.first]<i.second)
+            {
+                return false;
+            }
+            
+        }
+        else 
+        return false;
+      }
+    return true;
+    }
+
+    int main()
+{
+    string ransomNote,magazine;
+    cin>>ransomNote;
+    cin>>magazine;
+    bool answer = canConstruct(ransomNote,magazine);
+    if(answer==true)
+    cout<<"true";
+    else
+    cout<<"false";
+} 
